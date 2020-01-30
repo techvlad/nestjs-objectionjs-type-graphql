@@ -1,6 +1,7 @@
 import * as Knex from 'knex';
 import { Model } from 'objection';
 import { ClientModel } from '../models/client.model';
+import { SurgeonModel } from '../models/surgeon.model';
 
 export async function seed(knex: Knex): Promise<void> {
   Model.knex(knex);
@@ -24,6 +25,21 @@ export async function seed(knex: Knex): Promise<void> {
       firstName: 'Emma',
       lastName: 'Collins',
       email: 'emma.collins@example.com',
-    }
+    },
+  ]);
+
+  await SurgeonModel.query().insert([
+    {
+      fullName: 'Calvin Hunter',
+      yearsOfExperience: 1,
+    },
+    {
+      fullName: 'Camila Ramirez',
+      yearsOfExperience: 3,
+    },
+    {
+      fullName: 'Teresa Moore',
+      yearsOfExperience: 5,
+    },
   ]);
 }

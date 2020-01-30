@@ -4,8 +4,9 @@ import * as Knex from 'knex';
 import * as KnexConfig from '../../knexfile';
 import { Provider } from '@nestjs/common/interfaces/modules/provider.interface';
 import { ClientModel } from './models/client.model';
+import { SurgeonModel } from './models/surgeon.model';
 
-const models = [ClientModel];
+const models = [ClientModel, SurgeonModel];
 
 const modelProviders = models.map(model => {
   return {
@@ -22,11 +23,6 @@ const providers: Provider[] = [
       // Setup Objection.js
       const knex = Knex(KnexConfig);
       Model.knex(knex);
-
-      console.log(knex.client.config)
-
-      // Run migrations
-      await knex.migrate.latest();
 
       return knex;
     }
