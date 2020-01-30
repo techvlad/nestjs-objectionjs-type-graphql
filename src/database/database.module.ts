@@ -3,10 +3,10 @@ import { Model } from 'objection';
 import * as Knex from 'knex';
 import * as KnexConfig from '../../knexfile';
 import { Provider } from '@nestjs/common/interfaces/modules/provider.interface';
-import { ClientModel } from './models/client.model';
+import { Client } from './models/client';
 import { SurgeonModel } from './models/surgeon.model';
 
-const models = [ClientModel, SurgeonModel];
+const models = [Client, SurgeonModel];
 
 const modelProviders = models.map(model => {
   return {

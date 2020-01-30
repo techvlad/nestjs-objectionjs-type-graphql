@@ -1,11 +1,11 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ModelClass } from 'objection';
-import { ClientModel } from './database/models/client.model';
+import { Client } from './database/models/client';
 
 @Controller()
 export class AppController {
   constructor(
-    @Inject('ClientModel') private readonly cityModel: ModelClass<ClientModel>,
+    @Inject('Client') private readonly cityModel: ModelClass<Client>,
   ) {}
 
   @Get()

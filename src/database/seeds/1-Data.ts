@@ -1,11 +1,11 @@
 import * as Knex from 'knex';
 import { Model } from 'objection';
-import { ClientModel } from '../models/client.model';
+import { Client } from '../models/client';
 import { SurgeonModel } from '../models/surgeon.model';
 
 export async function seed(knex: Knex): Promise<void> {
   Model.knex(knex);
-  await ClientModel.query().insert([
+  await Client.query().insert([
     {
       firstName: 'Eric',
       lastName: 'Dixon',
