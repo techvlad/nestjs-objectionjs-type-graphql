@@ -1,12 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Inject } from '@nestjs/common';
+import { ModelClass } from 'objection';
+import { ClientModel } from './database/models/client.model';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    @Inject('ClientModel') private readonly cityModel: ModelClass<ClientModel>,
+  ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async index() {
+    return this.cityModel.query();
   }
 }
