@@ -1,4 +1,4 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Info } from '@nestjs/graphql';
 import { Inject, NotFoundException } from '@nestjs/common';
 import { ModelClass } from 'objection';
 import { Client } from './models/client';
@@ -16,5 +16,10 @@ export class ClientResolver {
       throw new NotFoundException(id);
     }
     return client;
+  }
+
+  @Query(returns => [Client])
+  async clients() {
+    return this.clientModel.query().select();
   }
 }
